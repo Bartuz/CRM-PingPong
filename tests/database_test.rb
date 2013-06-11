@@ -27,9 +27,13 @@ class TestDatabase < Test::Unit::TestCase
     db = Database.new
     contact = Contact.new(2,"randomname","rundomsurname","randomemail","randomnote")
 
-    assert_equal 0, @db.size
+    assert_equal 0, db.size
     db.add contact
-    assert_equal 1, @db.size
+    assert_equal 1, db.size
   end
 
+  def test_deleting_contact_removes_it_from_db
+    @db.delete_contact(@contact)
+    assert_equal 0, db.length
+  end
 end

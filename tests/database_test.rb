@@ -20,4 +20,15 @@ class TestDatabase < Test::Unit::TestCase
     assert_equal nil, contact
   end
 
+
+  def test_checking_total_number_of_conntacts_in_data_base
+    #new setup . starting with 0 contacts
+    db = Database.new
+    contact = Contact.new(2,"randomname","rundomsurname","randomemail","randomnote")
+
+    assert_equal 0, @db.size
+    db.add contact
+    assert_equal 1, @db.size
+  end
+
 end

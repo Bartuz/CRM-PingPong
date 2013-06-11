@@ -1,3 +1,4 @@
+
 require_relative 'helper_test'
 
 class TestDatabase < Test::Unit::TestCase

@@ -21,4 +21,8 @@ class Database
 		  end
   	end 
   end
+
+  def size
+  	return @contacts_array.size
+  end
 end

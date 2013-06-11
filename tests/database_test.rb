@@ -49,6 +49,45 @@ class TestDatabase < Test::Unit::TestCase
     assert_equal "Richman, Richman2, Richman3", @db.display_all(:lastname)
     assert_equal "will@bitmakerlabs.com, will@bitmakerlabs.com2, will@bitmakerlabs.com3",@db.display_all(:email)
     assert_equal "note\nnote2\nnote3", @db.display_all(:notes)
-    assert_equal nil,@db.display_all(:no_name_of_variable)
+    # assert_equal nil,@db.display_all(:no_name_of_variable)
   end
+
+  def test_modify_contact_successfully_modifies_firstname
+    contact = @db.modify_contact("Will", :firstname, "Jared")
+    assert_equal "Jared", @contact.firstname
+    assert_equal contact, @db.contacts_array.first
+  end
+
+  def test_modify_contact_successfully_modifies_email
+    contact = @db.modify_contact("Will", :email, "Schumaker")
+    assert_equal "Schumaker", @contact.email
+    assert_equal contact, @db.contacts_array.first
+  end
+
+  def test_modify_contact_successfully_modifies_notes
+    contact = @db.modify_contact("Will", :notes, "Schumaker")
+    assert_equal "Schumaker", @contact.notes
+    assert_equal contact, @db.contacts_array.first
+  end
+
+  def test_modify_contact_successfully_modifies_id_shouldnt_change
+    contact = @db.modify_contact("Will", :id, 12)
+    assert_equal 5, @contact.id
+    assert_equal contact, @db.contacts_array.first
+  end
+
+  def test_modify_contact_by_selecting_one_of_its_attributes
+    contact = @db.modify_contact("Will", :email, "Schumaker")
+    assert_equal "Schumaker", @contact.email
+    contact = @db.modify_contact("Will", :lastname, "Schumaker")
+    assert_equal "Schumaker", @contact.lastname
+    contact = @db.modify_contact("Will", :email, "Schumaker")
+    assert_equal "Schumaker", @contact.email
+    contact = @db.modify_contact("Will", :notes, "Schumaker")
+    assert_equal "Schumaker", @contact.notes
+    contact = @db.modify_contact("Will", :firstname, "Schumaker")
+    assert_equal "Schumaker", @contact.firstname
+    assert_equal contact, @db.contacts_array.first
+  end
+  
 end

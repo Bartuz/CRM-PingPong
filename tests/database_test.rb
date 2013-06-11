@@ -36,5 +36,18 @@ class TestDatabase < Test::Unit::TestCase
     @db.delete_contact(@contact)
     assert_equal 0, @db.size
   end
+  
+  def test_displaying_single_attribute_of_all_contacts
+    #new setup. adding new contacts
+    contact2 = Contact.new(65, "Will2", "Richman2", "will@bitmakerlabs.com2", "note2")
+    contact3 = Contact.new(77, "Will3", "Richman3", "will@bitmakerlabs.com3", "note3")
+    @db.add contact2
+    @db.add contact3
 
+    assert_equal "5, 65, 77", @db.display_all(:id)
+    assert_equal "Will, Will2, Will3", @db.display_all(:firstname)
+    assert_equal "Richman, Richman2, Richman3", @db.display_all(:lastname)
+    assert_equal "will@bitmakerlabs.com, will@bitmakerlabs.com2, will@bitmakerlabs.com3",display_all(:email)
+    assert_equal "note\nnote2\nnote3", display_all(:notes)
+  end
 end

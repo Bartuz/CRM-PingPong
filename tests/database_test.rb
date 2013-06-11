@@ -16,7 +16,8 @@ class TestDatabase < Test::Unit::TestCase
   end
 
   def test_modify_contact_returns_nil_for_unknown_contact
-    # didn't get to this one...
+    contact = @db.modify_contact("Jared", :firstname, "Filip")
+    assert_equal nil, contact
   end
 
   

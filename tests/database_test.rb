@@ -20,6 +20,4 @@ class TestDatabase < Test::Unit::TestCase
     assert_equal nil, contact
   end
 
-  
-
 end

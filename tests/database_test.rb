@@ -5,7 +5,7 @@ class TestDatabase < Test::Unit::TestCase
 
   def setup
     #puts ""
-    @contact = Contact.new(5, "Will", "Richman", "will@bitmakerlabs.com", "")
+    @contact = Contact.new(5, "Will", "Richman", "will@bitmakerlabs.com", "note")
     @db = Database.new
     @db.add @contact
   end
@@ -34,6 +34,7 @@ class TestDatabase < Test::Unit::TestCase
 
   def test_deleting_contact_removes_it_from_db
     @db.delete_contact(@contact)
-    assert_equal 0, db.length
+    assert_equal 0, @db.size
   end
+
 end

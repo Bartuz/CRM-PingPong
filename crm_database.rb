@@ -24,7 +24,12 @@ class Database
   end
 
   def size 
-  	return @contacts_array.size
+  	@contacts_array.size
+  end
+
+  def delete_contact(requested_contact)
+  	contact_to_delete = @contacts_array.find { |contact| contact.id == requested_contact.id }
+  	@contacts_array.delete(contact_to_delete)
   end
 
 

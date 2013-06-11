@@ -1,7 +1,4 @@
-require 'test/unit'
-
-require_relative '../crm_database'
-require_relative '../crm_contact'
+require_relative 'helper_test'
 
 class TestDatabase < Test::Unit::TestCase
 
@@ -14,7 +11,7 @@ class TestDatabase < Test::Unit::TestCase
 
   def test_modify_contact_successfully_modifies_lastname
     contact = @db.modify_contact("Will", :lastname, "Schumaker")
-    assert_equal "Schumaker", contact.lastname
+    assert_equal "Schumaker", @contact.lastname
     assert_equal contact, @db.contacts_array.first
   end
 

@@ -1,7 +1,4 @@
-require 'test/unit'
- 
-require_relative '../crm_database'
-require_relative '../crm_contact'
+require_relative 'helper_test'
  
 class TestContact < Test::Unit::TestCase
  
@@ -14,7 +11,8 @@ class TestContact < Test::Unit::TestCase
 	   	# Assert that you get back an instance of a contact
 	  assert @contact.is_a?(Contact)
 		assert_equal 5, @contact.id
-	  assert_equal "Will", @contact.first_name
+	  assert_equal "Will", @contact.firstname
+	  assert_equal "Richman", @contact.lastname
 		assert_equal "will@bitmakerlabs.com", @contact.email
 		assert_equal "", @contact.notes
 	 end
